@@ -2,7 +2,7 @@ CREATE SCHEMA `vgc` ;
 
 -- superadmin
 CREATE TABLE `superadmin` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(45) NOT NULL,
   `lastname` varchar(45) NOT NULL,
   `username` varchar(45) NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE `superadmin` (
 
 -- faculty
 CREATE TABLE `faculty` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(45) NOT NULL,
   `lastname` varchar(45) NOT NULL,
   `username` varchar(45) NOT NULL,
@@ -22,7 +22,7 @@ CREATE TABLE `faculty` (
 
 -- student
 CREATE TABLE `student` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(45) NOT NULL,
   `lastname` varchar(45) NOT NULL,
   `username` varchar(45) NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE `student` (
 
 -- branch
 CREATE TABLE `branch` (
-  `idbranch` int(11) NOT NULL,
+  `idbranch` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `details` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`idbranch`)
@@ -41,7 +41,7 @@ CREATE TABLE `branch` (
 
 -- course
 CREATE TABLE `course` (
-  `idcourse` int(11) NOT NULL,
+  `idcourse` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `details` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`idcourse`)
@@ -50,7 +50,7 @@ CREATE TABLE `course` (
 
 -- fee
 CREATE TABLE `fee` (
-  `idfee` int(11) NOT NULL,
+  `idfee` int(11) NOT NULL AUTO_INCREMENT,
   `feename` varchar(45) NOT NULL,
   `studentid` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE `fee` (
 
 -- lesson
 CREATE TABLE `lesson` (
-  `idlesson` int(11) NOT NULL,
+  `idlesson` int(11) NOT NULL AUTO_INCREMENT,
   `courseId` int(11) NOT NULL,
   `lessonname` varchar(45) NOT NULL,
   `plan` varchar(250) DEFAULT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE `lesson` (
 
 -- studentbranch
 CREATE TABLE `studentbranch` (
-  `idstudentbranch` int(11) NOT NULL,
+  `idstudentbranch` int(11) NOT NULL AUTO_INCREMENT,
   `branchid` int(11) NOT NULL,
   `studentid` int(11) NOT NULL,
   PRIMARY KEY (`idstudentbranch`),
@@ -85,7 +85,7 @@ CREATE TABLE `studentbranch` (
 
 -- studentdetails
 CREATE TABLE `studentdetails` (
-  `studentdetailsid` int(11) NOT NULL,
+  `studentdetailsid` int(11) NOT NULL AUTO_INCREMENT,
   `studentid` int(11) NOT NULL,
   `address` varchar(150) NOT NULL,
   `gaurdiancontactnumber` varchar(45) NOT NULL,
@@ -98,7 +98,7 @@ CREATE TABLE `studentdetails` (
 
 -- test (examination or assignment)
 CREATE TABLE `test` (
-  `testid` int(11) NOT NULL,
+  `testid` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `isAssignment` int(11) DEFAULT NULL,
   `isExam` int(11) DEFAULT NULL,
@@ -109,7 +109,7 @@ CREATE TABLE `test` (
 
 -- studenttest
 CREATE TABLE `studenttest` (
-  `idstudenttest` int(11) NOT NULL,
+  `idstudenttest` int(11) NOT NULL AUTO_INCREMENT,
   `studentid` int(11) NOT NULL,
   `testid` int(11) NOT NULL,
   `marksgained` int(11) NOT NULL,
