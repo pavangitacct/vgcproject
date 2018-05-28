@@ -1,6 +1,8 @@
 package model;
 
 import dbutil.DBUtil;
+import entity.Branch;
+import entity.Course;
 import entity.Faculty;
 import entity.Student;
 import entity.SuperAdmin;
@@ -23,6 +25,36 @@ public class Manager {
         //User user = m.getUser("hellohi", "pw1");
         //System.out.println(user);
         m.getAllTests();
+    }
+
+    public List<Branch> getAllBranches() {
+        List<Branch> list = new ArrayList<Branch>();
+        ResultSet rs = DBUtil.getTableResultSet("branch");
+        try {
+            while (rs.next()) {
+                Branch branch = new Branch(rs.getString("name"), rs.getString("details"));
+                System.out.println(branch);
+                list.add(branch);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public List<Course> getAllCourses() {
+        List<Course> list = new ArrayList<Course>();
+        ResultSet rs = DBUtil.getTableResultSet("course");
+        try {
+            while (rs.next()) {
+                Course course = new Course(rs.getString("name"), rs.getString("details"));
+                System.out.println(course);
+                list.add(course);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
     }
 
     public List<Test> getAllTests() {
