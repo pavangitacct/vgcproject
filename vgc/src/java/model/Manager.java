@@ -4,9 +4,12 @@ import dbutil.DBUtil;
 import entity.Faculty;
 import entity.Student;
 import entity.SuperAdmin;
+import entity.Test;
 import entity.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,8 +20,28 @@ public class Manager {
 
     public static void main(String atgc[]) {
         Manager m = new Manager();
-        User user = m.getUser("hellohi", "pw1");
-        System.out.println(user);
+        //User user = m.getUser("hellohi", "pw1");
+        //System.out.println(user);
+        m.getAllTests();
+    }
+
+    public List<Test> getAllTests() {
+        List<Test> list = new ArrayList<Test>();
+        ResultSet rs = DBUtil.getTableResultSet("test");
+        try {
+            while (rs.next()) {
+                Test test = new Test(rs.getString("name"), rs.getInt("isExam") == 1, rs.getInt("isAssignment") == 1, rs.getString("testdetails"), rs.getInt("maxmarkalloted"));
+                System.out.println(test);
+                list.add(test);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public boolean createTest(String testName, boolean assignment, boolean exam, String description, int maxMarksAlloted) {
+        return DBUtil.createTest(testName, assignment, exam, description, maxMarksAlloted);
     }
 
     public void addSuperAdmin(String firstName, String lastName, String password) {

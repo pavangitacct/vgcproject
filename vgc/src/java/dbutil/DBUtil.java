@@ -9,8 +9,9 @@ import java.util.logging.Logger;
 public class DBUtil {
 
     public static void main(String argc[]) {
-        //DBUtil.registerStudent("hello", "hi", "pw1");
-        System.out.println(DBUtil.getAvailableRows("student", "id=1"));
+        DBUtil.createTest("half yearly", false, true, "This is half yearly examinations", 200);
+//DBUtil.registerStudent("hello", "hi", "pw1");
+        //System.out.println(DBUtil.getAvailableRows("student", "id=1"));
         /*ResultSet rs = DBUtil.getTableResultSet("faculty", "id", 1);
         try {
             while (rs.next()) {
@@ -20,6 +21,8 @@ public class DBUtil {
             Logger.getLogger(DBUtil.class.getName()).log(Level.SEVERE, null, ex);
         }*/
     }
+    
+    
 
     public static int getAvailableRows(String tableName, String whereClause) {
         int totalaAvailableRows = 0;
@@ -95,6 +98,23 @@ public class DBUtil {
             pstmt.setString(2, lastName);
             pstmt.setString(3, firstName + lastName);
             pstmt.setString(4, password);
+            numberOfRowsCreated = pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return numberOfRowsCreated == 1;
+    }
+
+    public static boolean createTest(String testName, boolean assignment, boolean exam, String description, int maxMarksAlloted) {
+        PreparedStatement pstmt = null;
+        int numberOfRowsCreated = 0;
+        try {
+            pstmt = DBConnector.getConnection().prepareStatement("insert into test (name,isAssignment,isExam,testdetails,maxmarkalloted) values(?,?,?,?,?)");
+            pstmt.setString(1, testName);
+            pstmt.setInt(2, assignment ? 1 : 0);
+            pstmt.setInt(3, exam ? 1 : 0);
+            pstmt.setString(4, description);
+            pstmt.setInt(5, maxMarksAlloted);
             numberOfRowsCreated = pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(DBUtil.class.getName()).log(Level.SEVERE, null, ex);
