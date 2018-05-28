@@ -1,6 +1,7 @@
 package dbutil;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -8,7 +9,81 @@ import java.util.logging.Logger;
 public class DBUtil {
 
     public static void main(String argc[]) {
-        DBUtil.registerSuperAdmin("fn", "ln", "pw");
+        //DBUtil.registerStudent("hello", "hi", "pw1");
+        System.out.println(DBUtil.getAvailableRows("student", "id=1"));
+        /*ResultSet rs = DBUtil.getTableResultSet("faculty", "id", 1);
+        try {
+            while (rs.next()) {
+                System.out.println(rs.getString(2));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+    }
+
+    public static int getAvailableRows(String tableName, String whereClause) {
+        int totalaAvailableRows = 0;
+
+        String query = "select count(1) from " + tableName + " where " + whereClause;
+        try {
+            ResultSet rs = DBConnector.getStatement().executeQuery(query);
+            while (rs.next()) {
+                totalaAvailableRows = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return totalaAvailableRows;
+    }
+
+    public static int getAvailableRows(String tableName) {
+        int totalaAvailableRows = 0;
+
+        String query = "select count(1) from " + tableName;
+        try {
+            ResultSet rs = DBConnector.getStatement().executeQuery(query);
+            while (rs.next()) {
+                totalaAvailableRows = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return totalaAvailableRows;
+    }
+
+    public static ResultSet getTableResultSet(String tableName) {
+        ResultSet rs = null;
+        String query = "select * from " + tableName;
+        try {
+            rs = DBConnector.getStatement().executeQuery(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(DBUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rs;
+    }
+
+    public static ResultSet getTableResultSet(String tableName, String columnName, int value) {
+        ResultSet rs = null;
+        String query = "select * from " + tableName + " where " + columnName + " = " + value;
+        try {
+            rs = DBConnector.getStatement().executeQuery(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(DBUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rs;
+    }
+
+    public static ResultSet getTableResultSet(String tableName, String whereClause) {
+
+        ResultSet rs = null;
+        String query = "select * from " + tableName + " where " + whereClause;
+        System.out.println(query);
+        try {
+            rs = DBConnector.getStatement().executeQuery(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(DBUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rs;
     }
 
     public static boolean registerStudent(String firstName, String lastName, String password) {
