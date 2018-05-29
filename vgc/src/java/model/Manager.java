@@ -24,7 +24,8 @@ public class Manager {
         Manager m = new Manager();
         //User user = m.getUser("hellohi", "pw1");
         //System.out.println(user);
-        m.getAllTests();
+        //m.getAllTests();
+        m.addFacultY("faculty", "1", "pw");
     }
 
     public List<Branch> getAllBranches() {

@@ -68,7 +68,6 @@ public class DBUtil {
 
         ResultSet rs = null;
         String query = "select * from " + tableName + " where " + whereClause;
-        System.out.println(query);
         try {
             rs = DBConnector.getStatement().executeQuery(query);
         } catch (SQLException ex) {

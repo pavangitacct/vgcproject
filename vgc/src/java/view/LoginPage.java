@@ -1,5 +1,8 @@
 package view;
 
+import entity.Faculty;
+import entity.Student;
+import entity.SuperAdmin;
 import entity.User;
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +11,7 @@ import java.awt.event.ActionListener;
 import model.Manager;
 
 class LoginFrame extends JFrame implements ActionListener {
-
+    
     Container container = getContentPane();
     JLabel pageTitle = new JLabel("Login page");
     JLabel userLabel = new JLabel("USERNAME");
@@ -17,7 +20,7 @@ class LoginFrame extends JFrame implements ActionListener {
     JPasswordField passwordField = new JPasswordField();
     JButton loginButton = new JButton("LOGIN");
     Manager manager = new Manager();
-
+    
     LoginFrame() {
         loginButton.addActionListener(this);
         container.setLayout(null);
@@ -27,16 +30,16 @@ class LoginFrame extends JFrame implements ActionListener {
         userTextField.setBounds(150, 150, 150, 30);
         passwordField.setBounds(150, 220, 150, 30);
         loginButton.setBounds(50, 300, 100, 30);
-
+        
         container.add(pageTitle);
         container.add(userLabel);
         container.add(passwordLabel);
         container.add(userTextField);
         container.add(passwordField);
         container.add(loginButton);
-
+        
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         String un = userTextField.getText();
@@ -49,11 +52,23 @@ class LoginFrame extends JFrame implements ActionListener {
             errorPage.setVisible(true);
             this.setVisible(false);
         } else {
-            if (user.isSuperAdmin()) {
+            if (user.isSuperAdmin()) {                
+                System.out.println("Logged in as super admin.");
+                SuperAdminPage adminPage = new SuperAdminPage((SuperAdmin) user);
+                adminPage.setVisible(true);
+                this.setVisible(false);
             } else if (user.isFaculty()) {
+                System.out.println("Logged in as faculty.");
+                FacultyPage facultyPage = new FacultyPage((Faculty) user);
+                facultyPage.setVisible(true);
+                this.setVisible(false);
             } else if (user.isStudent()) {
+                System.out.println("Logged in as student.");
+                StudentPage studentPage = new StudentPage((Student) user);
+                studentPage.setVisible(true);
+                this.setVisible(false);
             }
         }
-
+        
     }
 }
