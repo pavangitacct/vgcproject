@@ -10,6 +10,7 @@ import model.Manager;
 class LoginFrame extends JFrame implements ActionListener {
 
     Container container = getContentPane();
+    JLabel pageTitle = new JLabel("Login page");
     JLabel userLabel = new JLabel("USERNAME");
     JLabel passwordLabel = new JLabel("PASSWORD");
     JTextField userTextField = new JTextField();
@@ -17,15 +18,17 @@ class LoginFrame extends JFrame implements ActionListener {
     JButton loginButton = new JButton("LOGIN");
     Manager manager = new Manager();
 
-    LoginFrame() {        
+    LoginFrame() {
         loginButton.addActionListener(this);
         container.setLayout(null);
+        pageTitle.setBounds(75, 50, 150, 50);
         userLabel.setBounds(50, 150, 100, 30);
         passwordLabel.setBounds(50, 220, 100, 30);
         userTextField.setBounds(150, 150, 150, 30);
         passwordField.setBounds(150, 220, 150, 30);
         loginButton.setBounds(50, 300, 100, 30);
 
+        container.add(pageTitle);
         container.add(userLabel);
         container.add(passwordLabel);
         container.add(userTextField);
