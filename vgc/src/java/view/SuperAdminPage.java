@@ -1,16 +1,23 @@
 package view;
 
 import entity.SuperAdmin;
-import javax.swing.*;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
 
-public class SuperAdminPage extends JFrame {
+public class SuperAdminPage extends JFrame implements ActionListener {
+SuperAdmin admin;
+    Container container = getContentPane();
 
-    SuperAdmin superAdmin;
-
-    SuperAdminPage(SuperAdmin superAdmin) {
-        this.superAdmin = superAdmin;
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Welcome");
-        setSize(400, 200);
+    SuperAdminPage(SuperAdmin admin) {
+        this.admin = admin;
+        this.setBounds(10, 10, 810, 510);
+        container.setLayout(null);
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+    }
+
 }

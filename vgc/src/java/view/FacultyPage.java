@@ -1,16 +1,24 @@
 package view;
 
 import entity.Faculty;
-import javax.swing.*;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
 
-public class FacultyPage extends JFrame {
+public class FacultyPage extends JFrame implements ActionListener {
 
     Faculty faculty;
+    Container container = getContentPane();
 
     FacultyPage(Faculty faculty) {
         this.faculty = faculty;
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Welcome");
-        setSize(400, 200);
+        this.setBounds(10, 10, 810, 510);
+        container.setLayout(null);
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+    }
+
 }
