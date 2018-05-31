@@ -1,6 +1,8 @@
 Report :
 --------
 1. 3 types of users recognized namely SuperAdmin, Faculty, Student.
+ One seeded SuperAdmin has been provided through the .sql script.
+credentials are : superadmin/password
 2. When User LoggedIn, based on the given credentials, one of the user will be found.
 3. Based on the user, their permittable screens will be shown.
 4. Flaw : If 2 types of users exists with the same credentials ??? 
