@@ -26,7 +26,7 @@ public class SuperAdminPage extends JFrame implements ActionListener {
         this.admin = admin;
         container.setLayout(null);
         this.setBounds(10, 10, 810, 510);
-        pageTitleLabel.setBounds(20, 10, 150, 50);
+        pageTitleLabel.setBounds(20, 10, 500, 50);
 
         facultyRegistrationButton.addActionListener(this);
         superAdminRegistrationButton.addActionListener(this);

@@ -28,7 +28,7 @@ public class ListOfBranchesPage extends JFrame implements ActionListener {
         }
         JList<String> testsList = new JList<String>(list);
         pageTitleLabel = new JLabel(title);
-        pageTitleLabel.setBounds(20, 10, 150, 50);
+        pageTitleLabel.setBounds(20, 10, 500, 50);
         testsList.setBounds(20, 50, 600, 300);
         container.add(pageTitleLabel);
         container.add(testsList);

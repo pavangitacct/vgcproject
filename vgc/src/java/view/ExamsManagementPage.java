@@ -33,7 +33,7 @@ public class ExamsManagementPage extends JFrame implements ActionListener {
         updateResultButton.addActionListener(this);
 
         pageTitleLabel = new JLabel(title);
-        pageTitleLabel.setBounds(20, 10, 150, 50);
+        pageTitleLabel.setBounds(20, 10, 500, 50);
 
         testIdLabel.setBounds(75, 50, 450, 30);
         testIdField.setBounds(350, 50, 250, 30);

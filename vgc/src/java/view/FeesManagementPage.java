@@ -36,7 +36,7 @@ public class FeesManagementPage extends JFrame implements ActionListener {
         updateResultButton.addActionListener(this);
 
         pageTitleLabel = new JLabel(title);
-        pageTitleLabel.setBounds(20, 10, 150, 50);
+        pageTitleLabel.setBounds(20, 10, 500, 50);
 
         feesPurposeLabel.setBounds(75, 50, 450, 30);
         feesPurposeField.setBounds(350, 50, 250, 30);

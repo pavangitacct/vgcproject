@@ -37,7 +37,7 @@ public class CalendarManagementPage extends JFrame implements ActionListener {
         createTestButton.addActionListener(this);
         showExistedTestsButton.addActionListener(this);
         pageTitleLabel = new JLabel(title);
-        pageTitleLabel.setBounds(20, 10, 150, 50);
+        pageTitleLabel.setBounds(20, 10, 500, 50);
 
         testTypeLable.setBounds(75, 50, 450, 30);
         testTypeField.setBounds(350, 50, 250, 30);
