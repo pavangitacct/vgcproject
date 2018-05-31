@@ -63,7 +63,7 @@ public class Manager {
         ResultSet rs = DBUtil.getTableResultSet("test");
         try {
             while (rs.next()) {
-                Test test = new Test(rs.getString("name"), rs.getInt("isExam") == 1, rs.getInt("isAssignment") == 1, rs.getString("testdetails"), rs.getInt("maxmarkalloted"));
+                Test test = new Test(rs.getLong("testid"), rs.getString("name"), rs.getInt("isExam") == 1, rs.getInt("isAssignment") == 1, rs.getString("testdetails"), rs.getInt("maxmarkalloted"));
                 System.out.println(test);
                 list.add(test);
             }
@@ -75,6 +75,10 @@ public class Manager {
 
     public boolean createTest(String testName, boolean assignment, boolean exam, String description, int maxMarksAlloted) {
         return DBUtil.createTest(testName, assignment, exam, description, maxMarksAlloted);
+    }
+
+    public boolean createStudentResult(Long testId, Long studentid, int marks) {
+        return DBUtil.createStudentResult(testId, studentid, marks);
     }
 
     public void addSuperAdmin(String firstName, String lastName, String password) {

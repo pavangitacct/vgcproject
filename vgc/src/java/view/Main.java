@@ -7,7 +7,8 @@ public class Main {
 
     public static void main(String arg[]) {
         try {
-            LoginFrame frame = new LoginFrame();
+            //LoginFrame frame = new LoginFrame();
+            ExamsManagementPage frame = new ExamsManagementPage("calnedar management");
             frame.setTitle("VGC");
             frame.setVisible(true);
             frame.setBounds(10, 10, 810, 510);

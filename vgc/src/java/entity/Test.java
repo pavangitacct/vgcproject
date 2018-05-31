@@ -2,13 +2,15 @@ package entity;
 
 public class Test {
 
+    private long id;
     private String name;
     private boolean exam;
     private boolean assignment;
     private String description;
     private int maxMarksAlloted;
 
-    public Test(String name, boolean exam, boolean assignment, String description, int maxMarksAlloted) {
+    public Test(long id, String name, boolean exam, boolean assignment, String description, int maxMarksAlloted) {
+        this.id = id;
         this.name = name;
         this.exam = exam;
         this.assignment = assignment;
@@ -56,7 +58,15 @@ public class Test {
         this.name = name;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String toString() {
-        return "name : " + this.getName() + " , description : " + this.getDescription() + " , max marks : " + this.getMaxMarksAlloted();
+        return "( id : " + this.getId() + " ) " + (this.isExam() ? "Exam " : "Assignment : ") + this.getName() + "on" + this.getDescription() + " held for " + this.getMaxMarksAlloted() + "; ";
     }
 }

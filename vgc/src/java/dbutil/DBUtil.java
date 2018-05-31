@@ -9,7 +9,8 @@ import java.util.logging.Logger;
 public class DBUtil {
 
     public static void main(String argc[]) {
-        DBUtil.createCourse("MCA123", "Master Of Computer Applications.");
+        //DBUtil.createCourse("MCA123", "Master Of Computer Applications.");
+        DBUtil.createStudentResult(1L, 3L, 50);
     }
 
     public static int getAvailableRows(String tableName, String whereClause) {
@@ -102,6 +103,21 @@ public class DBUtil {
             pstmt.setInt(3, exam ? 1 : 0);
             pstmt.setString(4, description);
             pstmt.setInt(5, maxMarksAlloted);
+            numberOfRowsCreated = pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return numberOfRowsCreated == 1;
+    }
+
+    public static boolean createStudentResult(Long testId, Long studentid, int marks) {
+        PreparedStatement pstmt = null;
+        int numberOfRowsCreated = 0;
+        try {
+            pstmt = DBConnector.getConnection().prepareStatement("insert into studenttest (studentid,testid,marksgained) values(?,?,?)");
+            pstmt.setLong(1, studentid);
+            pstmt.setLong(2, testId);
+            pstmt.setInt(3, marks);
             numberOfRowsCreated = pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(DBUtil.class.getName()).log(Level.SEVERE, null, ex);

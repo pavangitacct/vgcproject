@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import model.Manager;
 
 public class CalendarManagementPage extends JFrame implements ActionListener {
 
@@ -19,7 +20,7 @@ public class CalendarManagementPage extends JFrame implements ActionListener {
     JLabel testNameLable = new JLabel("Name :");
     JTextField testNameField = new JTextField();
 
-    JLabel testDescriptionLable = new JLabel("Description :");
+    JLabel testDescriptionLable = new JLabel("Date :");
     JTextField testDescriptionField = new JTextField();
 
     JLabel maxMarksLable = new JLabel("Max marks alloted:");
@@ -27,6 +28,8 @@ public class CalendarManagementPage extends JFrame implements ActionListener {
 
     JButton createTestButton = new JButton("Create Exam - Assignment");
     JButton showExistedTestsButton = new JButton("Show existed Exams - Assignments");
+
+    Manager manager = new Manager();
 
     CalendarManagementPage(String title) {
         this.setBounds(10, 10, 810, 510);
@@ -68,8 +71,14 @@ public class CalendarManagementPage extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // Create exam or assignment...
         if (e.getActionCommand().equals("Create Exam - Assignment")) {
+            boolean isExam = testTypeField.getText().equalsIgnoreCase("exam");
+            boolean isAssignment = testTypeField.getText().equalsIgnoreCase("assignment");
+            manager.createTest(testNameField.getText(), isAssignment, isExam, testDescriptionField.getText(), Integer.parseInt(maxMarksField.getText()));
+            setVisible(false);
         } // List of exams or assignments...
         else if (e.getActionCommand().equals("Show existed Exams - Assignments")) {
+            ListOfTestPage testsList = new ListOfTestPage("All available Tests");
+            testsList.setVisible(true);
         }
     }
 
