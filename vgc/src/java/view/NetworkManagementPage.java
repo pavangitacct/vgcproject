@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-class NetworkManagementPage extends JFrame implements ActionListener {
+public class NetworkManagementPage extends JFrame implements ActionListener {
 
     Container container = getContentPane();
     JLabel pageTitleLabel = null;
@@ -17,6 +17,7 @@ class NetworkManagementPage extends JFrame implements ActionListener {
 
         pageTitleLabel = new JLabel(title);
         pageTitleLabel.setBounds(20, 10, 150, 50);
+        container.add(pageTitleLabel);
     }
 
     @Override

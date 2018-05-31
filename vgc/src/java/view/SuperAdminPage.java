@@ -28,6 +28,13 @@ public class SuperAdminPage extends JFrame implements ActionListener {
         this.setBounds(10, 10, 810, 510);
         pageTitleLabel.setBounds(20, 10, 150, 50);
 
+        facultyRegistrationButton.addActionListener(this);
+        superAdminRegistrationButton.addActionListener(this);
+        academicCalenderManagementButton.addActionListener(this);
+        examsManagementButton.addActionListener(this);
+        networkManagementButton.addActionListener(this);
+        feesManagementButton.addActionListener(this);
+
         facultyRegistrationButton.setBounds(75, 50, 250, 30);
         superAdminRegistrationButton.setBounds(350, 50, 250, 30);
 
@@ -68,9 +75,8 @@ public class SuperAdminPage extends JFrame implements ActionListener {
             networkPage.setVisible(true);
         } //7.Management of fees paid
         else if (e.getActionCommand().equals("Fees Management")) {
-            FeesManagementPage feesPage = new FeesMangementPage("Fees Management");
+            FeesManagementPage feesPage = new FeesManagementPage("Fees Management");
             feesPage.setVisible(true);
         }
     }
-
 }
