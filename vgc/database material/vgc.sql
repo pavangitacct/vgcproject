@@ -10,6 +10,11 @@ CREATE TABLE `superadmin` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- Basic SuperAdmin User
+INSERT INTO `vgc`.`superadmin` (`id`, `firstname`, `lastname`, `username`, `password`) 
+VALUES ('1', 'super', 'admin', 'superadmin', 'password');
+
+
 -- faculty
 CREATE TABLE `faculty` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
