@@ -27,13 +27,13 @@ class LoginFrame extends JFrame implements ActionListener {
         registerButton.addActionListener(this);
         container.setLayout(null);
         pageTitle.setBounds(75, 50, 150, 50);
-        
+
         userLabel.setBounds(50, 150, 100, 30);
         userTextField.setBounds(150, 150, 150, 30);
-        
-        passwordLabel.setBounds(50, 220, 100, 30);        
+
+        passwordLabel.setBounds(50, 220, 100, 30);
         passwordField.setBounds(150, 220, 150, 30);
-        
+
         loginButton.setBounds(50, 300, 100, 30);
         registerButton.setBounds(50, 350, 400, 30);
 
@@ -59,7 +59,7 @@ class LoginFrame extends JFrame implements ActionListener {
             if (user == null) {
                 Errorpage errorPage = new Errorpage("No User found with the given credentials.");
                 errorPage.setVisible(true);
-                this.setVisible(false);
+                //this.setVisible(false);
             } else {
                 if (user.isSuperAdmin()) {
                     System.out.println("Logged in as super admin.");
