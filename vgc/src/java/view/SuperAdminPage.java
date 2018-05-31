@@ -56,12 +56,20 @@ public class SuperAdminPage extends JFrame implements ActionListener {
             registrationPage.setVisible(true);
         } // 1.Manage Academic Calendar (Exam dates, assignment dates)
         else if (e.getActionCommand().equals("Academic Calender Management")) {
+            CalendarManagementPage calendarPage = new CalendarManagementPage("Academic Calendar Management");
+            calendarPage.setVisible(true);
         } //2.Manage Exams, Assignments and Results.
         else if (e.getActionCommand().equals("Exams Management")) {
+            ExamsManagementPage examPage = new ExamsManagementPage("Exam Mangement");
+            examPage.setVisible(true);
         } //4.Manage Network – Adding more branches.
         else if (e.getActionCommand().equals("Network Management")) {
+            NetworkManagementPage networkPage = new NetworkManagementPage("Network Management");
+            networkPage.setVisible(true);
         } //7.Management of fees paid
         else if (e.getActionCommand().equals("Fees Management")) {
+            FeesManagementPage feesPage = new FeesMangementPage("Fees Management");
+            feesPage.setVisible(true);
         }
     }
 
