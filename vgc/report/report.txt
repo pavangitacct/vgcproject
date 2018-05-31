@@ -1,0 +1,18 @@
+Report :
+--------
+1. 3 types of users recognized namely SuperAdmin, Faculty, Student.
+2. When User LoggedIn, based on the given credentials, one of the user will be found.
+3. Based on the user, their permittable screens will be shown.
+4. Flaw : If 2 types of users exists with the same credentials ??? 
+    First if any super admin exists with the given credentials, it will return SuperAdmin object.
+    Next it verifies for Faculty.
+    Thirdly it verified for the Student.
+5. A new Student can register to the system. The button to register provided in the login page itself.
+6. A faculty member can also register a student. This feature given to him in his home faculty's page.
+7. A SuperAdmin can create another SuperAdmin and another faculty members.
+    This feature has been given in the hoe page of the SuperAdmin.
+8. In database, having 3 different tables for each type of user is a flaw. It would have been better if having a single table 'User' 
+    and differentiate the users with some flag values.
+9. Creating a new branch, add students marks, add student fee details, exam/assignment schedule are part of SuperAdmin.
+10.Facutly member is able to see the results.
+11.Student can view the exams schedule.
