@@ -2,10 +2,12 @@ package entity;
 
 public class Branch {
 
+    Long id;
     String name;
     String details;
 
-    public Branch(String name, String details) {
+    public Branch(Long id, String name, String details) {
+        this.id = id;
         this.name = name;
         this.details = details;
     }
@@ -26,7 +28,15 @@ public class Branch {
         this.name = name;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String toString() {
-        return "name : " + this.getName() + " , details : " + this.getDetails();
+        return "( branch id : " + getId() + " ) " + this.getName() + " , details : " + this.getDetails();
     }
 }

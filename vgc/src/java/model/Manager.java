@@ -33,7 +33,7 @@ public class Manager {
         ResultSet rs = DBUtil.getTableResultSet("branch");
         try {
             while (rs.next()) {
-                Branch branch = new Branch(rs.getString("name"), rs.getString("details"));
+                Branch branch = new Branch(rs.getLong("idbranch"), rs.getString("name"), rs.getString("details"));
                 System.out.println(branch);
                 list.add(branch);
             }
@@ -77,8 +77,16 @@ public class Manager {
         return DBUtil.createTest(testName, assignment, exam, description, maxMarksAlloted);
     }
 
+    public boolean createBranch(String branchName, String description) {
+        return DBUtil.createBranch(branchName, description);
+    }
+
     public boolean createStudentResult(Long testId, Long studentid, int marks) {
         return DBUtil.createStudentResult(testId, studentid, marks);
+    }
+
+    public boolean createFee(String feePurpose, Long studentId, int amount, String paidDate) {
+        return DBUtil.createFee(feePurpose, studentId, amount, paidDate);
     }
 
     public void addSuperAdmin(String firstName, String lastName, String password) {

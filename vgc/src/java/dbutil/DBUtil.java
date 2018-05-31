@@ -10,7 +10,8 @@ public class DBUtil {
 
     public static void main(String argc[]) {
         //DBUtil.createCourse("MCA123", "Master Of Computer Applications.");
-        DBUtil.createStudentResult(1L, 3L, 50);
+        //DBUtil.createStudentResult(1L, 3L, 50);
+        DBUtil.createFee("first term", 3L, 5000, "August 21 2018");
     }
 
     public static int getAvailableRows(String tableName, String whereClause) {
@@ -132,6 +133,22 @@ public class DBUtil {
             pstmt = DBConnector.getConnection().prepareStatement("insert into branch (name, details) values(?,?)");
             pstmt.setString(1, name);
             pstmt.setString(2, description);
+            numberOfRowsCreated = pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return numberOfRowsCreated == 1;
+    }
+
+    public static boolean createFee(String feePurpose, Long studentId, int amount, String paidDate) {
+        PreparedStatement pstmt = null;
+        int numberOfRowsCreated = 0;
+        try {
+            pstmt = DBConnector.getConnection().prepareStatement("insert into fee (feename,studentid,amount,paiddate) values(?,?,?,?)");
+            pstmt.setString(1, feePurpose);
+            pstmt.setLong(2, studentId);
+            pstmt.setInt(3, amount);
+            pstmt.setString(4, paidDate);
             numberOfRowsCreated = pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(DBUtil.class.getName()).log(Level.SEVERE, null, ex);
